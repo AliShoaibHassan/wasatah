@@ -1,0 +1,40 @@
+{
+  "name": "wasatah-poc",
+  "version": "1.0.0",
+  "description": "Wasatah.app - Blockchain + AI Real Estate PoC",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:api\"",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "dev:api": "npm run dev --workspace=apps/dev-api",
+    "dev:web-only": "node start-web-only.js",
+    "build": "npm run build --workspace=apps/web",
+    "build:web": "npm run build --workspace=apps/web",
+    "build:readonly": "npm run build:readonly --workspace=apps/web",
+    "build:api": "npm run build --workspace=apps/dev-api",
+    "lint": "npm run lint --workspaces",
+    "lint:fix": "npm run lint:fix --workspaces",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "npm run clean --workspaces",
+    "install:all": "npm install",
+    "setup:api": "npm run setup --workspace=apps/dev-api",
+    "reset:ledger": "npm run reset --workspace=apps/dev-api"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "prettier": "^3.1.0",
+    "eslint": "^8.57.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=9.0.0"
+  }
+}

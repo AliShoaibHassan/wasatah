@@ -1,0 +1,191 @@
+{
+  "events": [
+    {
+      "id": "event_001",
+      "type": "user_registered",
+      "timestamp": "2024-09-20T08:00:00Z",
+      "hash": "0x1a2b3c4d5e6f7890abcdef1234567890abcdef1234567890abcdef1234567890",
+      "actorId": "user_001",
+      "actorName": "Sarah Al-Mansouri",
+      "details": {
+        "email": "sarah@example.com",
+        "role": "buyer",
+        "verificationMethod": "NAFTA_SIM"
+      },
+      "signature": "0xabc123def456",
+      "blockNumber": 1,
+      "transactionIndex": 0
+    },
+    {
+      "id": "event_002", 
+      "type": "user_verified",
+      "timestamp": "2024-09-20T08:15:00Z",
+      "hash": "0x2b3c4d5e6f7890abcdef1234567890abcdef1234567890abcdef1234567890ab",
+      "actorId": "user_001",
+      "actorName": "Sarah Al-Mansouri",
+      "details": {
+        "verificationStatus": "verified",
+        "method": "NAFTA_SIM",
+        "confidence": 0.95
+      },
+      "signature": "0xdef456ghi789",
+      "blockNumber": 2,
+      "transactionIndex": 0
+    },
+    {
+      "id": "event_003",
+      "type": "property_listed",
+      "timestamp": "2024-09-20T09:00:00Z", 
+      "hash": "0x3c4d5e6f7890abcdef1234567890abcdef1234567890abcdef1234567890abcd",
+      "actorId": "user_002",
+      "actorName": "Ahmed Al-Rashid",
+      "details": {
+        "propertyId": "prop_001",
+        "title": "Luxury Villa in Al-Nakheel District",
+        "price": 2800000,
+        "currency": "SAR",
+        "deedVerified": true
+      },
+      "signature": "0xghi789jkl012",
+      "blockNumber": 3,
+      "transactionIndex": 0
+    },
+    {
+      "id": "event_004",
+      "type": "deed_verification",
+      "timestamp": "2024-09-20T09:30:00Z",
+      "hash": "0x4d5e6f7890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+      "actorId": "system",
+      "actorName": "Saudi Land Registry",
+      "details": {
+        "propertyId": "prop_001",
+        "verificationStatus": "verified",
+        "authority": "Saudi Land Registry",
+        "certificateNumber": "SLR-2024-001234"
+      },
+      "signature": "0xjkl012mno345",
+      "blockNumber": 4,
+      "transactionIndex": 0
+    },
+    {
+      "id": "event_005",
+      "type": "offer_made",
+      "timestamp": "2024-09-20T14:15:00Z",
+      "hash": "0x5e6f7890abcdef1234567890abcdef1234567890abcdef1234567890abcdef12",
+      "actorId": "user_001", 
+      "actorName": "Sarah Al-Mansouri",
+      "details": {
+        "offerId": "offer_001",
+        "propertyId": "prop_001",
+        "amount": 2500000,
+        "currency": "SAR",
+        "status": "locked",
+        "message": "I am very interested in this property. Please consider my offer."
+      },
+      "signature": "0xmno345pqr678",
+      "blockNumber": 5,
+      "transactionIndex": 0
+    },
+    {
+      "id": "event_006",
+      "type": "buyer_broker_linked",
+      "timestamp": "2024-09-20T15:00:00Z",
+      "hash": "0x6f7890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234",
+      "actorId": "broker_001",
+      "actorName": "Current Broker",
+      "details": {
+        "buyerId": "user_001",
+        "sellerId": "user_002", 
+        "propertyId": "prop_001",
+        "buyerName": "Sarah Al-Mansouri",
+        "sellerName": "Ahmed Al-Rashid",
+        "propertyTitle": "Luxury Villa in Al-Nakheel District",
+        "linkedAt": "2024-09-20T15:00:00Z"
+      },
+      "signature": "0xpqr678stu901",
+      "blockNumber": 6,
+      "transactionIndex": 0
+    },
+    {
+      "id": "event_007",
+      "type": "zkp_check",
+      "timestamp": "2024-09-20T15:30:00Z",
+      "hash": "0x7890abcdef1234567890abcdef1234567890abcdef1234567890abcdef123456",
+      "actorId": "user_001",
+      "actorName": "Sarah Al-Mansouri", 
+      "details": {
+        "verificationType": "identity_verification",
+        "zkpProof": "zkp_proof_12345",
+        "verified": true,
+        "confidence": 0.98
+      },
+      "signature": "0xstu901vwx234",
+      "blockNumber": 7,
+      "transactionIndex": 0
+    },
+    {
+      "id": "event_008",
+      "type": "transfer_completed",
+      "timestamp": "2024-09-20T16:00:00Z",
+      "hash": "0x890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567",
+      "actorId": "broker_001",
+      "actorName": "Current Broker",
+      "details": {
+        "connectionId": "conn_001",
+        "buyerId": "user_001",
+        "sellerId": "user_002",
+        "propertyId": "prop_001",
+        "amount": 2500000,
+        "completedAt": "2024-09-20T16:00:00Z",
+        "brokerId": "broker_001",
+        "signature": "0xvwx234yza567",
+        "transactionHash": "tx_1726848000000",
+        "status": "completed"
+      },
+      "signature": "0xyza567bcd890",
+      "blockNumber": 8,
+      "transactionIndex": 0
+    },
+    {
+      "id": "event_009",
+      "type": "impersonation_flag",
+      "timestamp": "2024-09-20T16:30:00Z",
+      "hash": "0x90abcdef1234567890abcdef1234567890abcdef1234567890abcdef12345678",
+      "actorId": "security_system",
+      "actorName": "Security System",
+      "details": {
+        "riskFlagId": "risk_001",
+        "type": "impersonation",
+        "severity": "high",
+        "description": "Duplicate email address detected across multiple accounts",
+        "metadata": {
+          "email": "test@example.com",
+          "duplicateAccountId": "user_003",
+          "rule": "duplicate_email",
+          "confidence": 0.95
+        },
+        "detectedAt": "2024-09-20T16:30:00Z"
+      },
+      "signature": "0xbcd890efg123",
+      "blockNumber": 9,
+      "transactionIndex": 0
+    },
+    {
+      "id": "event_010",
+      "type": "risk_assessment",
+      "timestamp": "2024-09-20T17:00:00Z",
+      "hash": "0x0abcdef1234567890abcdef1234567890abcdef1234567890abcdef123456789",
+      "actorId": "system",
+      "actorName": "Risk Assessment Engine",
+      "details": {
+        "userId": "user_001",
+        "riskScore": 15,
+        "factors": ["low_velocity", "verified_identity", "zkp_proof"],
+        "recommendation": "approve"
+      },
+      "signature": "0xefg123hij456",
+      "blockNumber": 10,
+      "transactionIndex": 0
+    }
+  ]
+}

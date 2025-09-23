@@ -1,0 +1,62 @@
+[
+  {
+    "id": "user_001",
+    "email": "demo@wasatah.app",
+    "name": "Demo User",
+    "phone": "+966501234567",
+    "role": "buyer",
+    "digitalId": {
+      "id": "digital_id_001",
+      "userId": "user_001",
+      "verified": true,
+      "verificationMethod": "NAFTA_SIM",
+      "issuedAt": "2024-09-20T10:00:00Z",
+      "expiresAt": "2025-09-20T10:00:00Z",
+      "zkpProof": "zkp_proof_12345",
+      "riskScore": 15
+    },
+    "createdAt": "2024-09-20T09:00:00Z",
+    "lastLoginAt": "2024-09-22T14:30:00Z",
+    "isActive": true
+  },
+  {
+    "id": "user_002",
+    "email": "ahmed.alrashid@example.com",
+    "name": "Ahmed Al-Rashid",
+    "phone": "+966501234568",
+    "role": "seller",
+    "digitalId": {
+      "id": "digital_id_002",
+      "userId": "user_002",
+      "verified": true,
+      "verificationMethod": "NAFTA_SIM",
+      "issuedAt": "2024-09-18T08:00:00Z",
+      "expiresAt": "2025-09-18T08:00:00Z",
+      "zkpProof": "zkp_proof_67890",
+      "riskScore": 8
+    },
+    "createdAt": "2024-09-18T07:30:00Z",
+    "lastLoginAt": "2024-09-22T11:15:00Z",
+    "isActive": true
+  },
+  {
+    "id": "user_003",
+    "email": "sarah.almansouri@example.com",
+    "name": "Sarah Al-Mansouri",
+    "phone": "+966501234569",
+    "role": "buyer",
+    "digitalId": {
+      "id": "digital_id_003",
+      "userId": "user_003",
+      "verified": true,
+      "verificationMethod": "NAFTA_SIM",
+      "issuedAt": "2024-09-19T14:00:00Z",
+      "expiresAt": "2025-09-19T14:00:00Z",
+      "zkpProof": "zkp_proof_11111",
+      "riskScore": 12
+    },
+    "createdAt": "2024-09-19T13:30:00Z",
+    "lastLoginAt": "2024-09-22T16:45:00Z",
+    "isActive": true
+  }
+]

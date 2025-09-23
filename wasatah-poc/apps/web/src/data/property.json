@@ -1,0 +1,59 @@
+[
+  {
+    "id": "prop_001",
+    "title": "Luxury Villa in Al-Nakheel District",
+    "description": "A stunning 4-bedroom luxury villa located in the prestigious Al-Nakheel district of Riyadh. This modern property features contemporary design, premium finishes, and a private garden perfect for family living.",
+    "address": "Al-Nakheel District, Riyadh 12345",
+    "city": "Riyadh",
+    "country": "Saudi Arabia",
+    "price": 2800000,
+    "currency": "SAR",
+    "area": 450,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "yearBuilt": 2020,
+    "propertyType": "villa",
+    "status": "available",
+    "ownerId": "user_002",
+    "ownerName": "Ahmed Al-Rashid",
+    "deedVerified": true,
+    "ownershipHistory": [
+      {
+        "ownerId": "user_002",
+        "ownerName": "Ahmed Al-Rashid",
+        "fromDate": "2020-03-15T00:00:00Z",
+        "toDate": null,
+        "transferType": "purchase",
+        "deedVerified": true,
+        "verificationAuthority": "Saudi Land Registry"
+      },
+      {
+        "ownerId": "developer_001",
+        "ownerName": "Al-Nakheel Development Co.",
+        "fromDate": "2019-01-01T00:00:00Z",
+        "toDate": "2020-03-15T00:00:00Z",
+        "transferType": "purchase",
+        "deedVerified": true,
+        "verificationAuthority": "Saudi Land Registry"
+      }
+    ],
+    "images": [
+      "/images/villa-exterior.jpg",
+      "/images/villa-living-room.jpg",
+      "/images/villa-kitchen.jpg",
+      "/images/villa-garden.jpg"
+    ],
+    "features": [
+      "Private Garden",
+      "Modern Kitchen",
+      "Master Suite with Walk-in Closet",
+      "Home Office",
+      "Two-Car Garage",
+      "Security System",
+      "Central Air Conditioning",
+      "High-Speed Internet Ready"
+    ],
+    "createdAt": "2024-09-22T10:30:00Z",
+    "updatedAt": "2024-09-22T10:30:00Z"
+  }
+]

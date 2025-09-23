@@ -1,0 +1,72 @@
+[
+  {
+    "id": "tx_001",
+    "type": "user_registered",
+    "timestamp": "2024-09-20T09:00:00Z",
+    "hash": "0x1a2b3c4d5e6f7890abcdef1234567890abcdef1234567890abcdef1234567890",
+    "actorId": "user_001",
+    "actorName": "Demo User",
+    "details": {
+      "email": "demo@wasatah.app",
+      "role": "buyer",
+      "verificationStatus": "pending"
+    },
+    "signature": "sig_001",
+    "blockNumber": 1000,
+    "transactionIndex": 0
+  },
+  {
+    "id": "tx_002",
+    "type": "identity_verification",
+    "timestamp": "2024-09-20T10:00:00Z",
+    "hash": "0x2b3c4d5e6f7890abcdef1234567890abcdef1234567890abcdef1234567890ab",
+    "actorId": "user_001",
+    "actorName": "Demo User",
+    "details": {
+      "method": "NAFTA_SIM",
+      "status": "verified",
+      "riskScore": 15,
+      "zkpProof": "zkp_proof_12345"
+    },
+    "signature": "sig_002",
+    "blockNumber": 1001,
+    "transactionIndex": 0
+  },
+  {
+    "id": "tx_003",
+    "type": "property_listed",
+    "timestamp": "2024-09-22T10:30:00Z",
+    "hash": "0x3c4d5e6f7890abcdef1234567890abcdef1234567890abcdef1234567890abcd",
+    "actorId": "user_002",
+    "actorName": "Ahmed Al-Rashid",
+    "details": {
+      "propertyId": "prop_001",
+      "propertyTitle": "Luxury Villa in Al-Nakheel District",
+      "price": "SAR 2,800,000",
+      "status": "available",
+      "deedVerified": true
+    },
+    "signature": "sig_003",
+    "blockNumber": 1002,
+    "transactionIndex": 0
+  },
+  {
+    "id": "tx_004",
+    "type": "offer_made",
+    "timestamp": "2024-09-22T14:15:00Z",
+    "hash": "0x4d5e6f7890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+    "actorId": "user_003",
+    "actorName": "Sarah Al-Mansouri",
+    "details": {
+      "propertyId": "prop_001",
+      "propertyTitle": "Luxury Villa in Al-Nakheel District",
+      "offerId": "offer_001",
+      "amount": "SAR 2,500,000",
+      "status": "pending",
+      "message": "Interested in this beautiful villa. Please consider my offer."
+    },
+    "signature": "sig_004",
+    "blockNumber": 1003,
+    "transactionIndex": 0
+  }
+]
