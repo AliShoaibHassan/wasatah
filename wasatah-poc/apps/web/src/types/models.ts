@@ -103,7 +103,7 @@ export interface LedgerEvent {
   hash: string; // Simulated blockchain hash
   actorId: string;
   actorName: string;
-  details: Record<string, any>;
+  details: Record<string, unknown>;
   signature?: string; // Simulated cryptographic signature
   blockNumber?: number; // Simulated block number
   transactionIndex?: number;
@@ -118,7 +118,7 @@ export interface RiskFlag {
   detectedAt: string;
   resolvedAt?: string;
   isActive: boolean;
-  metadata: Record<string, any>;
+  metadata: Record<string, unknown>;
 }
 
 // API Response Types
@@ -224,7 +224,7 @@ export interface ZKPProof {
   verified: boolean;
   verifiedAt: string;
   expiresAt?: string;
-  metadata: Record<string, any>;
+  metadata: Record<string, unknown>;
 }
 
 // Broker Connection Types

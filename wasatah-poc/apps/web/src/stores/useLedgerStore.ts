@@ -11,7 +11,7 @@ interface LedgerState {
   
   // Actions
   loadEvents: () => Promise<void>;
-  addEvent: (type: EventType, actorId: string, actorName: string, details: Record<string, any>) => Promise<LedgerEvent>;
+  addEvent: (type: EventType, actorId: string, actorName: string, details: Record<string, unknown>) => Promise<LedgerEvent>;
   getEventsByType: (type: EventType) => LedgerEvent[];
   getEventsByActor: (actorId: string) => LedgerEvent[];
   getRecentEvents: (limit?: number) => LedgerEvent[];
@@ -71,7 +71,7 @@ export const useLedgerStore = create<LedgerState>((set, get) => ({
     }
   },
 
-  addEvent: async (type: EventType, actorId: string, actorName: string, details: Record<string, any>) => {
+  addEvent: async (type: EventType, actorId: string, actorName: string, details: Record<string, unknown>) => {
     set({ isLoading: true, error: null });
     
     try {

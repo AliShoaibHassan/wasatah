@@ -103,10 +103,10 @@ const SecurityBanner = () => {
               </div>
               {flag.metadata && (
                 <div className="mt-1 text-red-200">
-                  <span className="font-medium">Confidence:</span> {Math.round((flag.metadata.confidence || 0) * 100)}%
-                  {flag.metadata.rule && (
+                  <span className="font-medium">Confidence:</span> {Math.round((Number(flag.metadata.confidence) || 0) * 100)}%
+                  {typeof flag.metadata.rule === 'string' && (
                     <span className="ml-2">
-                      <span className="font-medium">Rule:</span> {flag.metadata.rule}
+                      <span className="font-medium">Rule:</span> <span>{flag.metadata.rule}</span>
                     </span>
                   )}
                 </div>

@@ -11,9 +11,9 @@ interface SecurityState {
   // Actions
   loadRiskFlags: () => Promise<void>;
   checkImpersonationRisk: (user: User) => Promise<RiskFlag[]>;
-  evaluateImpersonation: (user: User, context: any) => Promise<RiskFlag[]>;
+  evaluateImpersonation: (user: User, context: Record<string, unknown>) => Promise<RiskFlag[]>;
   assessIdentityRisk: (digitalId: DigitalID) => Promise<number>;
-  createRiskFlag: (userId: string, type: RiskFlag['type'], severity: RiskFlag['severity'], description: string, metadata?: Record<string, any>) => Promise<RiskFlag>;
+  createRiskFlag: (userId: string, type: RiskFlag['type'], severity: RiskFlag['severity'], description: string, metadata?: Record<string, unknown>) => Promise<RiskFlag>;
   resolveRiskFlag: (flagId: string) => Promise<void>;
   getRiskFlagsByUser: (userId: string) => RiskFlag[];
   getActiveRiskFlags: () => RiskFlag[];
@@ -160,7 +160,7 @@ export const useSecurityStore = create<SecurityState>((set, get) => ({
     }
   },
 
-  evaluateImpersonation: async (user: User, context: any) => {
+  evaluateImpersonation: async (user: User, context: Record<string, unknown>) => {
     set({ isLoading: true, error: null });
     
     try {
@@ -343,7 +343,7 @@ export const useSecurityStore = create<SecurityState>((set, get) => ({
     }
   },
 
-  createRiskFlag: async (userId: string, type: RiskFlag['type'], severity: RiskFlag['severity'], description: string, metadata?: Record<string, any>) => {
+  createRiskFlag: async (userId: string, type: RiskFlag['type'], severity: RiskFlag['severity'], description: string, metadata?: Record<string, unknown>) => {
     set({ isLoading: true, error: null });
     
     try {

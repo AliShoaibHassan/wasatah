@@ -238,9 +238,10 @@ export const useOfferStore = create<OfferState>((set, get) => ({
     return get().offers.filter(o => o.buyerId === buyerId);
   },
 
-  getOffersBySeller: (_sellerId: string) => {
+  getOffersBySeller: (sellerId: string) => {
     // TODO: Implement logic to get offers for properties owned by seller
     // For now, return empty array
+    console.log('Getting offers for seller:', sellerId);
     return [];
   },
 

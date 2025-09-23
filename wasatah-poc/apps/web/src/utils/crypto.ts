@@ -1,7 +1,7 @@
 // Crypto utilities for Wasatah.app PoC
 // Note: This is a simplified implementation for demo purposes
 
-export const createPseudoSignature = (payload: Record<string, any>): string => {
+export const createPseudoSignature = (payload: Record<string, unknown>): string => {
   // Create a simple hash-like signature for demo purposes
   const payloadString = JSON.stringify(payload, Object.keys(payload).sort());
   const timestamp = Date.now().toString();
@@ -20,7 +20,7 @@ export const createPseudoSignature = (payload: Record<string, any>): string => {
   return `0x${hexHash}${timestamp.slice(-8)}`;
 };
 
-export const verifyPseudoSignature = (signature: string, payload: Record<string, any>): boolean => {
+export const verifyPseudoSignature = (signature: string, payload: Record<string, unknown>): boolean => {
   const expectedSignature = createPseudoSignature(payload);
   return signature === expectedSignature;
 };

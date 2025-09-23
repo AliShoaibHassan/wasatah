@@ -186,10 +186,10 @@ const AboutZKPage = () => {
                   </div>
                   <div className="text-sm text-gray-700">
                     <strong>Actor:</strong> {event.actorName} | 
-                    <strong> Type:</strong> {event.details.verificationType || 'identity_verification'} | 
+                    <strong> Type:</strong> {String(event.details.verificationType) || 'identity_verification'} |
                     <strong> Verified:</strong> {event.details.verified ? '✅ Yes' : '❌ No'}
-                    {event.details.confidence && (
-                      <span> | <strong>Confidence:</strong> {Math.round(event.details.confidence * 100)}%</span>
+                    {typeof event.details.confidence === 'number' && (
+                      <span> | <strong>Confidence:</strong> <span>{Math.round(event.details.confidence * 100)}%</span></span>
                     )}
                   </div>
                 </div>

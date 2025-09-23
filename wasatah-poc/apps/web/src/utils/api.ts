@@ -93,7 +93,7 @@ class ApiClient {
     type: EventType,
     actorId: string,
     actorName: string,
-    details: Record<string, any>
+    details: Record<string, unknown>
   ): Promise<ApiResponse<LedgerEvent>> {
     if (this.isReadonly) {
       return {

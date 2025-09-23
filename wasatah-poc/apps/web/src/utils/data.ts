@@ -29,7 +29,7 @@ export function deepClone<T>(obj: T): T {
   
   const cloned = {} as T;
   for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
       cloned[key] = deepClone(obj[key]);
     }
   }
@@ -84,7 +84,7 @@ export function createLedgerEvent(
   type: LedgerEvent['type'],
   actorId: string,
   actorName: string,
-  details: Record<string, any>
+  details: Record<string, unknown>
 ): LedgerEvent {
   return {
     id: generateId('tx'),

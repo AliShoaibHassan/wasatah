@@ -3,7 +3,6 @@ import { Card, CardBody } from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
 import { useNavigate } from 'react-router-dom';
 import propertyData from '../data/property.json';
-import { useRoleStore } from '../stores/useRoleStore';
 import { useOfferStore } from '../stores/useOfferStore';
 import { usePropertyStore } from '../stores/usePropertyStore';
 import { useLedgerStore } from '../stores/useLedgerStore';
@@ -11,10 +10,10 @@ import { createPseudoSignature } from '../utils/crypto';
 import { isReadonlyMode } from '../utils/api';
 import PropertyEditModal from '../components/PropertyEditModal';
 import Notification from '../components/Notification';
+import type { Property } from '../types/models';
 
 const SellerPage = () => {
   const navigate = useNavigate();
-  const { } = useRoleStore();
   const [isEditing, setIsEditing] = useState(false);
   const [notification, setNotification] = useState<{
     message: string;
@@ -40,7 +39,7 @@ const SellerPage = () => {
   const { addEvent } = useLedgerStore();
   
   // Get the featured property from the seed data
-  const property = propertyData[0] as any;
+  const property = propertyData[0] as Property;
 
   // Load offers and property on component mount
   useEffect(() => {
@@ -208,7 +207,7 @@ const SellerPage = () => {
 
               {/* Property Images */}
               <div className="grid grid-cols-3 gap-4 mb-6">
-                {property.images.map((_: any, index: number) => (
+                {property.images.map((_: string, index: number) => (
                   <div key={index} className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
                     <span className="text-gray-400">🏠 Image {index + 1}</span>
                   </div>
@@ -219,7 +218,7 @@ const SellerPage = () => {
               <div>
                 <h3 className="text-lg font-semibold mb-4">Ownership History</h3>
                 <div className="space-y-3">
-                  {ownershipHistory.map((owner: any, index: number) => {
+                  {ownershipHistory.map((owner: typeof ownershipHistory[0], index: number) => {
                     const fromDate = new Date(owner.fromDate).toLocaleDateString();
                     const toDate = owner.toDate ? new Date(owner.toDate).toLocaleDateString() : 'Present';
                     const isCurrentOwner = !owner.toDate;

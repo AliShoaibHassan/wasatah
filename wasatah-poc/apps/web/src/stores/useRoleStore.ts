@@ -35,15 +35,17 @@ export const useRoleStore = create<RoleState>((set) => ({
     });
   },
 
-  getAvailableRoles: (_user: User) => {
+  getAvailableRoles: (user: User) => {
     // TODO: Implement role-based access control
     // For now, all users can access all roles
+    console.log('Getting available roles for user:', user.id);
     return ['buyer', 'seller', 'broker'];
   },
 
-  canAccessRole: (_role: Role, _user: User) => {
+  canAccessRole: (role: Role, user: User) => {
     // TODO: Implement role-based access control logic
     // For demo purposes, all users can access all roles
+    console.log('Checking role access:', { role, userId: user.id });
     return true;
   },
 }));
