@@ -12,9 +12,14 @@ import { seedDatabase } from './utils/seedData.js';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// CORS configuration for localhost:5173 (Vite dev server)
+// CORS configuration for production and development
 const corsOptions = {
-  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+  origin: [
+    'http://localhost:5173', 
+    'http://127.0.0.1:5173',
+    'https://prismatic-panda-fca344.netlify.app',
+    'https://wasatah.netlify.app'
+  ],
   credentials: true,
   optionsSuccessStatus: 200
 };

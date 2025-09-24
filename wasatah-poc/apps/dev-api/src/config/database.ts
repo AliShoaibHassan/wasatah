@@ -14,11 +14,21 @@ export const connectToDatabase = async (): Promise<Db> => {
     return db;
   }
 
-  // For now, let's use a simple in-memory fallback to get the app working
-  // We can fix the MongoDB connection later
-  console.log('🔄 Using in-memory storage for development...');
-  
-  db = {
+  try {
+    console.log('🔌 Connecting to MongoDB Atlas...');
+    client = new MongoClient(MONGODB_URI);
+    await client.connect();
+    db = client.db(DB_NAME);
+    
+    console.log('✅ Connected to MongoDB Atlas successfully');
+    await createCollections();
+    return db;
+  } catch (error) {
+    console.error('❌ Failed to connect to MongoDB:', error);
+    console.log('🔄 Falling back to in-memory storage...');
+    
+    // Fallback to in-memory storage
+    db = {
     collection: (name: string) => ({
       findOne: (query: any) => {
         const docs = inMemoryStore[name] || [];
@@ -111,8 +121,9 @@ export const connectToDatabase = async (): Promise<Db> => {
     })
   } as any;
   
-  console.log('⚠️  Using in-memory fallback - data will not persist between restarts');
-  return db;
+    console.log('⚠️  Using in-memory fallback - data will not persist between restarts');
+    return db;
+  }
 };
 
 const createCollections = async () => {

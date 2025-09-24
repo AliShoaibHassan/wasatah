@@ -2,7 +2,7 @@
 import type { LedgerEvent, EventType } from '../types/models';
 
 // API configuration
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://prismatic-panda-fca344.netlify.app/.netlify/functions/api';
 const IS_READONLY = import.meta.env.VITE_READONLY === 'true';
 
 // API response types

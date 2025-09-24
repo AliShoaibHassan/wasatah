@@ -5,6 +5,8 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  VITE_API_URL = "https://prismatic-panda-fca344.netlify.app/.netlify/functions/api"
+  VITE_READONLY = "false"
 
 [[headers]]
   for = "/*"
