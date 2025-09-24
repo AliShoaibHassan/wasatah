@@ -139,6 +139,21 @@ const createCollections = async () => {
     try {
       await db.createCollection(collectionName);
       console.log(`📁 Created collection: ${collectionName}`);
+      
+      // Create indexes for better performance
+      if (collectionName === 'users') {
+        await db.collection(collectionName).createIndex({ email: 1 }, { unique: true });
+        await db.collection(collectionName).createIndex({ id: 1 }, { unique: true });
+      }
+      if (collectionName === 'ledger_events') {
+        await db.collection(collectionName).createIndex({ timestamp: -1 });
+        await db.collection(collectionName).createIndex({ actorId: 1 });
+      }
+      if (collectionName === 'properties') {
+        await db.collection(collectionName).createIndex({ id: 1 }, { unique: true });
+        await db.collection(collectionName).createIndex({ status: 1 });
+      }
+      
     } catch (error: any) {
       // Collection might already exist, that's okay
       if (error.code !== 48) { // MongoDB error code for collection already exists
