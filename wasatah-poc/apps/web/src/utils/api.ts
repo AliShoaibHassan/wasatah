@@ -129,6 +129,21 @@ class ApiClient {
     });
   }
 
+  // User authentication
+  async login(email: string, password: string): Promise<ApiResponse<any>> {
+    return this.request<any>('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+    });
+  }
+
+  async register(userData: any): Promise<ApiResponse<any>> {
+    return this.request<any>('/auth/register', {
+      method: 'POST',
+      body: JSON.stringify(userData),
+    });
+  }
+
   // Health check
   async healthCheck(): Promise<ApiResponse<{ status: string; timestamp: string }>> {
     return this.request<{ status: string; timestamp: string }>('/health');

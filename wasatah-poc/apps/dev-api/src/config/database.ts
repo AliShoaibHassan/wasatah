@@ -1,6 +1,6 @@
 import { MongoClient, Db } from 'mongodb';
 
-const MONGODB_URI = 'mongodb+srv://shahzaibhaider161_db_user:S930thurUvTd2XzY@cluster0.exzelqa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&ssl=true&authSource=admin';
+const MONGODB_URI = 'mongodb+srv://shahzaibhaider161_db_user:S930thurUvTd2XzY@cluster0.exzelqa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 const DB_NAME = 'wasatah';
 
 let client: MongoClient;

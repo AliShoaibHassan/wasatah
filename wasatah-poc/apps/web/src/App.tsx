@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import TopBar from './components/TopBar';
 import Container from './components/layout/Container';
 import SecurityBanner from './components/SecurityBanner';
-import LoginPage from './pages/LoginPage';
+import AuthPage from './pages/AuthPage';
 import RolePage from './pages/RolePage';
 import SellerPage from './pages/SellerPage';
 import BrokerPage from './pages/BrokerPage';
@@ -19,8 +19,8 @@ function App() {
         <main className="py-8">
           <Container>
             <Routes>
-              <Route path="/" element={<LoginPage />} />
-              <Route path="/login" element={<LoginPage />} />
+              <Route path="/" element={<AuthPage />} />
+              <Route path="/login" element={<AuthPage />} />
               <Route path="/role" element={<RolePage />} />
               <Route path="/seller" element={<SellerPage />} />
               <Route path="/broker" element={<BrokerPage />} />

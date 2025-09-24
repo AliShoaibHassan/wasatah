@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { User, LoginForm, DigitalID } from '../types/models';
+import { apiClient } from '../utils/api';
 
 interface AuthState {
   // State
@@ -11,6 +12,7 @@ interface AuthState {
   
   // Actions
   login: (credentials: LoginForm) => Promise<void>;
+  register: (userData: any) => Promise<void>;
   logout: () => void;
   updateUser: (user: Partial<User>) => void;
   setUser: (user: User) => void;
@@ -33,36 +35,50 @@ export const useAuthStore = create<AuthState>()(
         set({ isLoading: true, error: null });
         
         try {
-          // TODO: Implement actual login logic with API
-          console.log('Login attempt:', credentials);
+          const response = await apiClient.login(credentials.email, credentials.password);
           
-          // Simulate API call
-          await new Promise(resolve => setTimeout(resolve, 500));
-          
-          // For demo purposes, just set a basic user structure
-          // The actual user data will be set by the login page
-          const mockUser: User = {
-            id: 'temp_user',
-            email: credentials.email,
-            name: 'Loading...',
-            phone: '+966501234567',
-            role: 'buyer', // Default role, will be changed in role selection
-            createdAt: new Date().toISOString(),
-            isActive: true,
-          };
-          
-          set({
-            user: mockUser,
-            isAuthenticated: true,
-            isLoading: false,
-            error: null,
-          });
+          if (response.success && response.data) {
+            set({
+              user: response.data.user,
+              isAuthenticated: true,
+              isLoading: false,
+              error: null,
+            });
+          } else {
+            throw new Error(response.error || 'Login failed');
+          }
         } catch (error) {
           set({
             user: null,
             isAuthenticated: false,
             isLoading: false,
             error: error instanceof Error ? error.message : 'Login failed',
+          });
+        }
+      },
+
+      register: async (userData: any) => {
+        set({ isLoading: true, error: null });
+        
+        try {
+          const response = await apiClient.register(userData);
+          
+          if (response.success && response.data) {
+            set({
+              user: response.data.user,
+              isAuthenticated: true,
+              isLoading: false,
+              error: null,
+            });
+          } else {
+            throw new Error(response.error || 'Registration failed');
+          }
+        } catch (error) {
+          set({
+            user: null,
+            isAuthenticated: false,
+            isLoading: false,
+            error: error instanceof Error ? error.message : 'Registration failed',
           });
         }
       },

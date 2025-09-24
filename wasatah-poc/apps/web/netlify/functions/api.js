@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-const MONGODB_URI = 'mongodb+srv://shahzaibhaider161_db_user:S930thurUvTd2XzY@cluster0.exzelqa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&ssl=true&authSource=admin';
+const MONGODB_URI = 'mongodb+srv://shahzaibhaider161_db_user:S930thurUvTd2XzY@cluster0.exzelqa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 const DB_NAME = 'wasatah';
 
 let client;
@@ -58,6 +58,88 @@ exports.handler = async (event, context) => {
           timestamp: new Date().toISOString() 
         })
       };
+    }
+
+    // User authentication endpoints
+    if (path === '/auth/login') {
+      if (event.httpMethod === 'POST') {
+        const body = JSON.parse(event.body);
+        const collection = db.collection('users');
+        
+        const user = await collection.findOne({ 
+          email: body.email,
+          password: body.password // In production, use hashed passwords
+        });
+        
+        if (!user) {
+          return {
+            statusCode: 401,
+            headers: {
+              'Content-Type': 'application/json',
+              ...corsHeaders
+            },
+            body: JSON.stringify({ error: 'Invalid credentials' })
+          };
+        }
+        
+        return {
+          statusCode: 200,
+          headers: {
+            'Content-Type': 'application/json',
+            ...corsHeaders
+          },
+          body: JSON.stringify({ user: { ...user, password: undefined } })
+        };
+      }
+    }
+
+    if (path === '/auth/register') {
+      if (event.httpMethod === 'POST') {
+        const body = JSON.parse(event.body);
+        const collection = db.collection('users');
+        
+        // Check if user already exists
+        const existingUser = await collection.findOne({ email: body.email });
+        if (existingUser) {
+          return {
+            statusCode: 400,
+            headers: {
+              'Content-Type': 'application/json',
+              ...corsHeaders
+            },
+            body: JSON.stringify({ error: 'User already exists' })
+          };
+        }
+        
+        // Create new user
+        const newUser = {
+          ...body,
+          id: `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+          createdAt: new Date().toISOString(),
+          isActive: true,
+          digitalId: {
+            id: `DID-${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+            userId: `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+            verified: true,
+            verificationMethod: 'NAFTA_SIM',
+            issuedAt: new Date().toISOString(),
+            expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
+            zkpProof: `zkp_proof_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+            riskScore: Math.floor(Math.random() * 20) + 5,
+          }
+        };
+        
+        await collection.insertOne(newUser);
+        
+        return {
+          statusCode: 201,
+          headers: {
+            'Content-Type': 'application/json',
+            ...corsHeaders
+          },
+          body: JSON.stringify({ user: { ...newUser, password: undefined } })
+        };
+      }
     }
 
     if (path === '/ledger') {
