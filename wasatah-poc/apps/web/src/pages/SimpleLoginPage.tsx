@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Card, CardBody } from '../components/ui/Card';
 import { useAuthStore } from '../stores/useAuthStore';
 import { useLedgerStore } from '../stores/useLedgerStore';
@@ -7,7 +7,8 @@ import { useRoleStore } from '../stores/useRoleStore';
 import shortid from 'shortid';
 
 const SimpleLoginPage = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const location = useLocation();
+  const [isLogin, setIsLogin] = useState(location.pathname === '/login' || location.pathname === '/');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   
@@ -24,6 +25,15 @@ const SimpleLoginPage = () => {
   const { login, register, setUser } = useAuthStore();
   const { addEvent } = useLedgerStore();
   const { selectRole } = useRoleStore();
+
+  // Update mode based on URL
+  useEffect(() => {
+    if (location.pathname === '/signup') {
+      setIsLogin(false);
+    } else if (location.pathname === '/login' || location.pathname === '/') {
+      setIsLogin(true);
+    }
+  }, [location.pathname]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
